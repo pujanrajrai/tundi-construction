@@ -19,6 +19,8 @@ def tender_reports(request):
         context['from_date'] = from_date
         context['to_date'] = to_date
     context['tables'] = tables
+    print('i am here \n')
+    print(tables)
     return render(request, 'project/tender_reports.html', context)
 
 
