@@ -1,4 +1,5 @@
-import pypyodbc as pyodbc
+import pyodbc
+
 
 def sql_connection_fetch(query_set):
     try:
