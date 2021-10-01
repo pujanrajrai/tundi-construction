@@ -20,12 +20,9 @@ def login(request):
         else:
             context = {"errors": "User name or password is incorrect"}
             return render(request, 'accounts/login.html', context)
-
     return render(request, 'accounts/login.html')
 
 
 def logout(request):
     auth.logout(request)
     return render(request, 'accounts/login.html')
-
-
