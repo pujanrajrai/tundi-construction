@@ -7,21 +7,19 @@ from django.shortcuts import render, redirect
 
 def login(request):
     if request.user.is_authenticated:
-        # return redirect('dashboard:dashboard')
-        return render(request, 'accounts/authenticate.html')
+        return redirect('dashboard:home')
     if request.method == 'POST':
         if request.user.is_authenticated:
-            return render(request, 'accounts/authenticate.html')
+            return redirect('dashboard:home')
         username = request.POST['username']
         password = request.POST['password']
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            return render(request, 'accounts/authenticate.html')
-
+            return redirect('dashboard:home')
         else:
-            errors = "User name or password is incorrect"
-            return render(request, 'accounts/notauthenticate.html')
+            context = {"errors": "User name or password is incorrect"}
+            return render(request, 'accounts/login.html', context)
 
     return render(request, 'accounts/login.html')
 
@@ -29,3 +27,5 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return render(request, 'accounts/login.html')
+
+

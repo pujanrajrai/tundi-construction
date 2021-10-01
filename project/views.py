@@ -4,7 +4,7 @@ from connections import sql_connection_fetch
 
 
 # Create your views here.
-@staff_member_required()
+@staff_member_required(login_url='/accounts/login/')
 def tender_reports(request):
     context = {}
     if request.method == 'GET':
@@ -24,7 +24,7 @@ def tender_reports(request):
     return render(request, 'project/tender_reports.html', context)
 
 
-@staff_member_required()
+@staff_member_required(login_url='/accounts/login/')
 def tender_details_reports(request, str):
     if request.method == 'GET':
         context = {}
