@@ -1,1 +1,0 @@
-web: waitress-serve --port=$PORT tundi_construction_production.wsgi:application
